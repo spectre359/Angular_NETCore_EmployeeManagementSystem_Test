@@ -68,5 +68,5 @@ export class FetchEmployeesComponent implements OnInit {
 
 interface Employee {
   name: string;
-  position: number;
+  position: string;
 }
