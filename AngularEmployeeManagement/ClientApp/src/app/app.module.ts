@@ -16,7 +16,9 @@ import { EmployeeService } from './employee_service/employee.service';
 import * as _ from 'lodash';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
-
+import {MatCardModule } from '@angular/material';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +34,9 @@ import {MatButtonModule} from '@angular/material/button';
     MatButtonModule,
     HttpClientModule,
     FormsModule,
+    MatCardModule,
+    MatInputModule,
+    MatFormFieldModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -39,6 +44,9 @@ import {MatButtonModule} from '@angular/material/button';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'fetch-employees', component: FetchEmployeesComponent },
     ])
+  ],
+  exports:[
+
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]

@@ -12,6 +12,7 @@ export class FetchEmployeesComponent implements OnInit {
   public currentEmployee: any;
 
   constructor(private employeeService: EmployeeService) {
+    debugger;
     employeeService.get().subscribe((data: any) => this.employees = data);
     this.currentEmployee = this.setInitialValuesForEmployeeData();
   }
