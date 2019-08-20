@@ -1,17 +1,26 @@
 <div>
   <h2 *ngIf="!employee || employee.name === undefined || employee.name === '' ">Add record</h2>
   <h2 *ngIf="employee && employee.name !== undefined && employee.name !== '' ">Update record (NAME: )</h2>
-  <form>
-    <div class="form-group">
-      <label for="name-input">Name:</label>
-      <input type="text" name="name" id="name" [(ngModel)]="employee.name" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label for="position-input">Position:</label>
-      <input type="text" name="position" id="position" [(ngModel)]="employee.position" class="form-control" />
-    </div>
+  <md-card>
+    <md-card-content>
+    <form>
+      <md-input-container>
+      
+        <label for="name-input">Name:</label>
+        <input type="text" name="name" id="name" [(ngModel)]="employee.name" class="form-control" />
+     
+    </md-input-container>
+    <md-input-container>
+      
+        <label for="position-input">Position:</label>
+        <input type="text" name="position" id="position" [(ngModel)]="employee.position" class="form-control" />
+     
+    </md-input-container>
+    <md-card-actions>
+      <button md-button color="primary" type="button" (click)="addOrUpdateEmployeeRecord($event);">Save</button>
+    </md-card-actions>
+    </form>
+  </md-card-content>
+  </md-card>
 
-    <button mat-button type="button" class="btn btn-primary" (click)="addOrUpdateEmployeeRecord($event);">Save</button>
-
-  </form>
 </div>

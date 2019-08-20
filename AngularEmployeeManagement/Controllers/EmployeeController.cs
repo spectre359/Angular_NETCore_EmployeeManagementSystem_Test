@@ -10,11 +10,7 @@ namespace AngularEmployeeManagement.Controllers
     [Route("api/[controller]")]
     public class EmployeeController : Controller
     {
-
-        [Route("employees")]
-        public async Task<IActionResult> GetEmployees()
-        {
-            var list = new List<Employee>()
+        static List<Employee> list = new List<Employee>()
             {
                 new Employee
                 {
@@ -27,7 +23,10 @@ namespace AngularEmployeeManagement.Controllers
                     Position = "Developer"
                 }
             };
-            return Ok(list);
+        [Route("employees")]
+        public async Task<IActionResult> GetEmployees()
+        {
+           return Ok(list);
         }
 
         [HttpPut("{name}")]
@@ -37,6 +36,8 @@ namespace AngularEmployeeManagement.Controllers
             {
                 return BadRequest(ModelState);
             }
+            var e = list.FirstOrDefault(em => em.Name == name);
+            e = employee;
             return Ok();
         }
 
@@ -47,13 +48,15 @@ namespace AngularEmployeeManagement.Controllers
             {
                 return BadRequest(ModelState);
             }
+            list.Add(employee);
             return Ok();
         }
 
         [HttpDelete("{name}")]
         public async Task<IActionResult> DeleteEmployee([FromRoute] string name)
         {
-            
+            var em=list.FirstOrDefault(e => e.Name == name);
+            list.Remove(em);
             return Ok();
         }
     }
