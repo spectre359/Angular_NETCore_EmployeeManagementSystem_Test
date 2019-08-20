@@ -1,0 +1,33 @@
+<h1>Employee list</h1>
+
+
+<p *ngIf="!employees"><em>Loading...</em></p>
+
+<a mat-button href="javascript:void(0);" (click)="newRecord()">New</a>
+<div class="row">
+  <div class="col-sm-4">
+    <app-addOrUpdateEmployee (employeeCreated)="createOrUpdateEmployee($event)" [employee]="currentEmployee"></app-addOrUpdateEmployee>
+  </div>
+  <div class="col-md-8">
+    <table class='table table-striped' *ngIf="employees">
+      <thead>
+        <tr>
+          <th>Employee Name</th>
+          <th>Employee Position</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.position }}</td>
+          <td>
+            <a href="javascript:void(0);"  (click)="editRecord(employee)">Edit</a>
+            <a href="javascript:void(0);"  (click)="deleteRecord(employee)">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
