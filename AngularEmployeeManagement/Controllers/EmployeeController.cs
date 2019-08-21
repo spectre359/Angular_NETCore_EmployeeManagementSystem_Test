@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AngularEmployeeManagement.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AngularEmployeeManagement.Controllers
 {
+    [EnableCors("OpenPolicy")]
     [Route("api/[controller]")]
     public class EmployeeController : Controller
     {
